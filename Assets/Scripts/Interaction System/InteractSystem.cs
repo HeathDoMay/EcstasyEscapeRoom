@@ -9,50 +9,65 @@ public class InteractSystem : MonoBehaviour
     [Header("Player Inputs")]
     public PlayerInput playerInput;
 
-    public GameObject canvas;
-
     [Header("Variables")]
     [SerializeField] private Transform playerCamera;
     [SerializeField] private Transform objectGrabPointTransform;
     [SerializeField] private float pickUpDistance;
     [SerializeField] private LayerMask pickUpMask;
 
+    [Header("UI Reference")]
+    [SerializeField] private GameObject pressE;
+
     private ObjectGrabbable objectGrabbable;
+
+    bool pickedUpObject;
 
     void Update()
     {
-        if (Input.GetKeyDown(playerInput.interact))
+        if (objectGrabbable == null)
         {
-            if (objectGrabbable == null)
+            // not carrying an object, try to grab
+            // raycast will only detect objects with the layer mask "Objects"
+            if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit raycastHit, pickUpDistance, pickUpMask))
             {
-                // not carrying an object, try to grab
-                // raycast will hit everything in from of the camera 
-                if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit raycastHit, pickUpDistance, pickUpMask))
-                {
-                    Debug.Log(raycastHit.transform);
+                Debug.Log(raycastHit.transform);
+                pressE.SetActive(true);
 
+                if (Input.GetKeyDown(playerInput.interact))
+                {
                     // will test to see if the object the player presses E on has the script ObjectGrabbable
                     if (raycastHit.transform.TryGetComponent(out objectGrabbable))
                     {
+                        pressE.SetActive(false);
                         objectGrabbable.Grab(objectGrabPointTransform);
+
+                        pickedUpObject = true;
                     }
                 }
             }
-            // press E to drop object
-            // else
-            // {
-            //     // currently carrying something, drop
-            //     objectGrabbable.Drop();
-            //     objectGrabbable = null;
-            // }
+            else
+            {
+                pressE.SetActive(false);
+            }
         }
 
-        // press G to drop object
+        // player holds R the object in hand will rotate
+        if (pickedUpObject == true)
+        {
+            if (Input.GetKey(KeyCode.R))
+            {
+                objectGrabbable.Rotate();
+            }
+        }
+
+        // press G to drop object, could make the player have to press E again to drop
         if (Input.GetKeyDown(playerInput.drop))
         {
             // currently carrying something, drop
             objectGrabbable.Drop();
             objectGrabbable = null;
+
+            pickedUpObject = false;
         }
     }
 }

@@ -2020,6 +2020,12 @@ Transform:
   m_Father: {fileID: 480333603}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!4 &139479271 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3153165801192759527, guid: 2f301fc7e9b230d4abb5710ccf9db789,
+    type: 3}
+  m_PrefabInstance: {fileID: 2773917132204019772}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &250694808
 GameObject:
   m_ObjectHideFlags: 0
@@ -2051,6 +2057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interact: 101
   drop: 103
+  crouchOne: 306
 --- !u!4 &250694810
 Transform:
   m_ObjectHideFlags: 0
@@ -5301,7 +5308,7 @@ Rigidbody:
   m_GameObject: {fileID: 1372531681}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 1
+  m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -5686,7 +5693,7 @@ Rigidbody:
   m_GameObject: {fileID: 1544521529}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 5
+  m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -5716,6 +5723,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f712693363ac674c8bf7a6b5ff946e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1554198622 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4464560906119042681, guid: 2f301fc7e9b230d4abb5710ccf9db789,
+    type: 3}
+  m_PrefabInstance: {fileID: 2773917132204019772}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1559584512
 GameObject:
   m_ObjectHideFlags: 0
@@ -10361,6 +10374,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 280743688852265998, guid: 2f301fc7e9b230d4abb5710ccf9db789,
+        type: 3}
+      propertyPath: m_Height
+      value: 3.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 280743688852265998, guid: 2f301fc7e9b230d4abb5710ccf9db789,
+        type: 3}
+      propertyPath: m_StepOffset
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1873554162912652362, guid: 2f301fc7e9b230d4abb5710ccf9db789,
+        type: 3}
+      propertyPath: pressE
+      value: 
+      objectReference: {fileID: 1554198622}
     - target: {fileID: 1873554162912652362, guid: 2f301fc7e9b230d4abb5710ccf9db789,
         type: 3}
       propertyPath: playerInput
@@ -10370,6 +10398,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153165801192759527, guid: 2f301fc7e9b230d4abb5710ccf9db789,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3153165801192759527, guid: 2f301fc7e9b230d4abb5710ccf9db789,
         type: 3}
@@ -10425,6 +10458,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368888919839615656, guid: 2f301fc7e9b230d4abb5710ccf9db789,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 139479271}
+    - target: {fileID: 8368888919839615656, guid: 2f301fc7e9b230d4abb5710ccf9db789,
+        type: 3}
+      propertyPath: playerInput
+      value: 
+      objectReference: {fileID: 250694809}
+    - target: {fileID: 8368888919839615656, guid: 2f301fc7e9b230d4abb5710ccf9db789,
+        type: 3}
+      propertyPath: crouchHeight
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368888919839615656, guid: 2f301fc7e9b230d4abb5710ccf9db789,
+        type: 3}
+      propertyPath: normalHeight
+      value: 3.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

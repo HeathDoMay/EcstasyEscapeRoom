@@ -6,4 +6,5 @@ public class PlayerInput : MonoBehaviour
 {
     public KeyCode interact;
     public KeyCode drop;
+    public KeyCode crouchOne;
 }

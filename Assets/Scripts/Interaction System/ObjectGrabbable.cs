@@ -31,10 +31,18 @@ public class ObjectGrabbable : MonoBehaviour
         objectRigidbody.isKinematic = false;
     }
 
+    public void Rotate()
+    {
+        Vector3 rotate = new Vector3(50f, 25f, 50f);
+
+        transform.Rotate(rotate * Time.deltaTime);
+        Debug.Log(rotate);
+    }
+
     private void FixedUpdate()
     {
         // if object is not null then there is an object near the grab point
-        if(objectGrabPointTransform != null)
+        if (objectGrabPointTransform != null)
         {
             float lerpSpeed = 10f;
 
