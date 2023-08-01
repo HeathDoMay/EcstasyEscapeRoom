@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InteractSystem : MonoBehaviour
 {
+    // Reference: https://www.youtube.com/watch?v=2IhzPTS4av4&t=183s
+
     [Header("Player Inputs")]
     public PlayerInput playerInput;
 
