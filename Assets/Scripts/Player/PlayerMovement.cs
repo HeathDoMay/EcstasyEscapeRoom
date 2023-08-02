@@ -24,8 +24,6 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
     bool isCrouched;
 
-
-
     void Update()
     {
         Jumping();

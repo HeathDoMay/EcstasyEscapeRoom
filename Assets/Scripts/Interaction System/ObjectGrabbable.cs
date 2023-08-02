@@ -19,6 +19,8 @@ public class ObjectGrabbable : MonoBehaviour
     {
         // updating the grab object via script
         this.objectGrabPointTransform = objectGrabPointTransform;
+
+        // setting parameters on Rigidbody 
         objectRigidbody.useGravity = false;
         objectRigidbody.isKinematic = true;
     }
@@ -27,17 +29,19 @@ public class ObjectGrabbable : MonoBehaviour
     {
         // object is no longer in the grab location
         this.objectGrabPointTransform = null;
+
+        // resetting parameters on Rigidbody
         objectRigidbody.useGravity = true;
         objectRigidbody.isKinematic = false;
     }
 
-    public void Rotate()
-    {
-        Vector3 rotate = new Vector3(50f, 25f, 50f);
+    // public void Rotate()
+    // {
+    //     Vector3 rotate = new Vector3(50f, 25f, 50f);
 
-        transform.Rotate(rotate * Time.deltaTime);
-        Debug.Log(rotate);
-    }
+    //     transform.Rotate(rotate * Time.deltaTime);
+    //     Debug.Log(rotate);
+    // }
 
     private void FixedUpdate()
     {

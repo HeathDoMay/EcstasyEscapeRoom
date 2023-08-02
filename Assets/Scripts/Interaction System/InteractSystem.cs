@@ -19,8 +19,7 @@ public class InteractSystem : MonoBehaviour
     [SerializeField] private GameObject pressE;
 
     private ObjectGrabbable objectGrabbable;
-
-    bool pickedUpObject;
+    private bool pickedUpObject;
 
     void Update()
     {
@@ -42,6 +41,7 @@ public class InteractSystem : MonoBehaviour
                         objectGrabbable.Grab(objectGrabPointTransform);
 
                         pickedUpObject = true;
+                        Debug.Log(pickedUpObject);
                     }
                 }
             }
@@ -52,13 +52,13 @@ public class InteractSystem : MonoBehaviour
         }
 
         // player holds R the object in hand will rotate
-        if (pickedUpObject == true)
-        {
-            if (Input.GetKey(KeyCode.R))
-            {
-                objectGrabbable.Rotate();
-            }
-        }
+        // if (pickedUpObject == true)
+        // {
+        //     if (Input.GetKey(playerInput.rotate))
+        //     {
+        //         objectGrabbable.Rotate();
+        //     }
+        // }
 
         // press G to drop object, could make the player have to press E again to drop
         if (Input.GetKeyDown(playerInput.drop))
@@ -68,6 +68,7 @@ public class InteractSystem : MonoBehaviour
             objectGrabbable = null;
 
             pickedUpObject = false;
+            Debug.Log(pickedUpObject);
         }
     }
 }
