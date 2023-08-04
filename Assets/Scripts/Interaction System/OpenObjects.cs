@@ -4,32 +4,26 @@ using UnityEngine;
 
 public class OpenObjects : MonoBehaviour
 {
-    public Animator doorAnim;
+    private Animator animator;
 
     void Start()
     {
-        doorAnim = GetComponent<Animator>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        animator = GetComponent<Animator>();
     }
 
     public void OpenDoor()
     {
-        if(doorAnim != null)
+        if(animator != null)
         {
-            doorAnim.SetTrigger("openTrigger");
+            animator.SetTrigger("openTrigger");
         }
     }
 
     public void CloseDoor()
     {
-        if(doorAnim != null)
+        if(animator != null)
         {
-            doorAnim.SetTrigger("closeTrigger");
+            animator.SetTrigger("closeTrigger");
         }
     }
 }

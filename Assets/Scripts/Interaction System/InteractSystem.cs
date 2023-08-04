@@ -15,10 +15,15 @@ public class InteractSystem : MonoBehaviour
     [SerializeField] private float pickUpDistance;
     [SerializeField] private LayerMask pickUpMask;
 
-    [Header("Open Objects")]
-    [SerializeField] private LayerMask openMask;
+    [Header("Open Door")]
+    [SerializeField] private LayerMask openDoorMask;
     [SerializeField] private float openDistance;
-    bool isOpen = false;
+    bool doorIsOpen = false;
+
+    [Header("Open Drawer")]
+    [SerializeField] private LayerMask openDrawerMask;
+    bool drawerIsOpen = false;
+
 
     [Header("UI Reference")]
     [SerializeField] private GameObject pressE;
@@ -31,42 +36,105 @@ public class InteractSystem : MonoBehaviour
     {
         GrabAndDropObjects();
 
-        // raycast that will detect an object with the "Door/Chest"
-        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit raycastHit, openDistance, openMask))
-        {
-            Debug.Log(raycastHit.transform);
-            pressE.SetActive(true);
+        OpenDoors();
 
-            if (isOpen == false)
+        OpenDrawers();
+    }
+
+    private void OpenDrawers()
+    {
+        if (pickedUpObject == true)
+        {
+            Debug.Log("Cant open that");
+        }
+        else
+        {
+            // raycast that will detect an object with the "Drawer" mask
+            if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit raycastHit, openDistance, openDrawerMask))
             {
-                if (Input.GetKeyDown(playerInput.interact))
+                Debug.Log(raycastHit.transform);
+                pressE.SetActive(true);
+
+                if (drawerIsOpen == false)
                 {
-                    // checks if the door has the script OpenObjects
-                    if (raycastHit.transform.TryGetComponent(out openObjects))
+                    if (Input.GetKeyDown(playerInput.interact))
                     {
-                        // plays animation
-                        openObjects.OpenDoor();
-                        isOpen = true;
-                        Debug.Log(isOpen);
+                        if (raycastHit.transform.TryGetComponent(out openObjects))
+                        {
+                            // play animation
+
+                            drawerIsOpen = true;
+                            Debug.Log(drawerIsOpen);
+                        }
                     }
                 }
-            }
-            else if (isOpen == true)
-            {
-                if (Input.GetKeyDown(playerInput.interact))
+                else if (drawerIsOpen == true)
                 {
-                    if (raycastHit.transform.TryGetComponent(out openObjects))
+                    if (Input.GetKeyDown(playerInput.interact))
                     {
-                        // plays animation
-                        openObjects.CloseDoor();
-                        isOpen = false;
-                        Debug.Log(isOpen);
+                        if (raycastHit.transform.TryGetComponent(out openObjects))
+                        {
+                            // play animation
+
+                            drawerIsOpen = false;
+                            Debug.Log(drawerIsOpen);
+                        }
                     }
                 }
+                else
+                {
+                    drawerIsOpen = false;
+                }
             }
-            else
+        }
+    }
+
+    private void OpenDoors()
+    {
+        // player is holding an object they can not open a door 
+        if (pickedUpObject == true)
+        {
+            Debug.Log("Cant open that");
+        }
+        else
+        {
+            // raycast that will detect an object with the "Door" mask
+            if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit raycastHit, openDistance, openDoorMask))
             {
-                isOpen = false;
+                Debug.Log(raycastHit.transform);
+                pressE.SetActive(true);
+
+                if (doorIsOpen == false)
+                {
+                    if (Input.GetKeyDown(playerInput.interact))
+                    {
+                        // checks if the door has the script OpenObjects
+                        if (raycastHit.transform.TryGetComponent(out openObjects))
+                        {
+                            // plays animation
+                            openObjects.OpenDoor();
+                            doorIsOpen = true;
+                            Debug.Log(doorIsOpen);
+                        }
+                    }
+                }
+                else if (doorIsOpen == true)
+                {
+                    if (Input.GetKeyDown(playerInput.interact))
+                    {
+                        if (raycastHit.transform.TryGetComponent(out openObjects))
+                        {
+                            // plays animation
+                            openObjects.CloseDoor();
+                            doorIsOpen = false;
+                            Debug.Log(doorIsOpen);
+                        }
+                    }
+                }
+                else
+                {
+                    doorIsOpen = false;
+                }
             }
         }
     }

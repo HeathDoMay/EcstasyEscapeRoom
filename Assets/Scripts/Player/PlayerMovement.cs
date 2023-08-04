@@ -6,7 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     // Reference: https://www.youtube.com/watch?v=_QajrabyTJc
 
-    [Header("Player Controller")]
+    [Header("Player Input and Controller")]
+    public PlayerInput playerInput;
     [SerializeField] private CharacterController controller;
 
     [Header("Movement Values")]
@@ -15,39 +16,42 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpHeight;
 
     [Header("References")]
-    public Transform groundCheck;
-    public float groundDistance;
-    public LayerMask groundMask;
-    public PlayerInput playerInput;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float groundDistance;
+    [SerializeField] private LayerMask groundMask;
 
     Vector3 velocity;
-    bool isGrounded;
     bool isCrouched;
 
     void Update()
     {
         Jumping();
         Crouching();
+        Movement();
+    }
 
-        // movement keys
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+    private void Movement()
+    {
+        // movement keys 
+        float horizontal = Input.GetAxis("Horizontal"); // A, D
+        float vertical = Input.GetAxis("Vertical"); // W, S
 
         // dircetion based on our X and Z locations
-        Vector3 move = transform.right * x + transform.forward * z;
+        Vector3 move = transform.right * horizontal + transform.forward * vertical;
 
         // player moves
-        controller.Move(move * speed * Time.deltaTime);
-
-        // crouching, C or CTRL
-        if (Input.GetKeyDown(playerInput.crouchOne))
+        if (move.magnitude >= 0.1f)
         {
-            isCrouched = true;
-        }
+            controller.Move(speed * Time.deltaTime * move);
 
-        if (Input.GetKeyUp(playerInput.crouchOne) && isCrouched == true)
-        {
-            isCrouched = false;
+            // if (Input.GetKey(KeyCode.LeftShift))
+            // {
+            //     float sprintMultipler = 1.5f;
+            //     speed *= sprintMultipler;
+            //     controller.Move(speed * Time.deltaTime * move);
+
+            //     Debug.Log("sprinting");
+            // }
         }
     }
 
@@ -60,6 +64,8 @@ public class PlayerMovement : MonoBehaviour
 
             groundCheck = postion, groundDistance = radius, groundMask is the Layermask we are looking for
         */
+
+        bool isGrounded;
 
         // collides with groundMask isGrounded = true
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -86,13 +92,25 @@ public class PlayerMovement : MonoBehaviour
         float crouchHeight = 1.8f;
         float normalHeight = 3.6f;
 
+        // crouching, CTRL
+        if (Input.GetKey(playerInput.crouchOne))
+        {
+            isCrouched = true;
+        }
+        else
+        {
+            isCrouched = false;
+        }
+
         if (isCrouched == true)
         {
             controller.height = crouchHeight;
+            speed = 6;
         }
         else
         {
             controller.height = normalHeight;
+            speed = 12;
         }
     }
 }
