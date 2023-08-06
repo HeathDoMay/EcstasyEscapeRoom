@@ -101,7 +101,7 @@ public class InteractSystem : MonoBehaviour
             // raycast that will detect an object with the "Door" mask
             if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit raycastHit, openDistance, openDoorMask))
             {
-                Debug.Log(raycastHit.transform);
+                // Debug.Log(raycastHit.transform);
                 pressE.SetActive(true);
 
                 if (doorIsOpen == false)
@@ -114,7 +114,7 @@ public class InteractSystem : MonoBehaviour
                             // plays animation
                             openObjects.OpenDoor();
                             doorIsOpen = true;
-                            Debug.Log(doorIsOpen);
+                            // Debug.Log(doorIsOpen);
                         }
                     }
                 }
@@ -127,7 +127,7 @@ public class InteractSystem : MonoBehaviour
                             // plays animation
                             openObjects.CloseDoor();
                             doorIsOpen = false;
-                            Debug.Log(doorIsOpen);
+                            // Debug.Log(doorIsOpen);
                         }
                     }
                 }
@@ -147,7 +147,7 @@ public class InteractSystem : MonoBehaviour
             // raycast will only detect objects with the layer mask "Objects"
             if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit raycastHit, pickUpDistance, pickUpMask))
             {
-                Debug.Log(raycastHit.transform);
+                // Debug.Log(raycastHit.transform);
                 pressE.SetActive(true);
 
                 if (Input.GetKeyDown(playerInput.interact))
@@ -159,7 +159,7 @@ public class InteractSystem : MonoBehaviour
                         objectGrabbable.Grab(objectGrabPointTransform);
 
                         pickedUpObject = true;
-                        Debug.Log(pickedUpObject);
+                        // Debug.Log(pickedUpObject);
                     }
                 }
             }
@@ -186,7 +186,7 @@ public class InteractSystem : MonoBehaviour
             objectGrabbable = null;
 
             pickedUpObject = false;
-            Debug.Log(pickedUpObject);
+            // Debug.Log(pickedUpObject);
         }
     }
 }

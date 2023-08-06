@@ -16584,14 +16584,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168035778}
-  m_LocalRotation: {x: 1.110223e-17, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 1.110223e-17, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2, y: 0, z: 27.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 359697169}
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  - {fileID: 1926684436}
+  m_Father: {fileID: 572010230}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &282894513
 Mesh:
@@ -16784,12 +16784,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359697168}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.514, y: 3.343, z: -0.45000076}
+  m_LocalPosition: {x: 0.48600006, y: 3.343, z: -0.45000076}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1005031814}
-  m_Father: {fileID: 168035784}
+  m_Father: {fileID: 942952155}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &359697170
@@ -16822,12 +16822,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 359697168}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52c354e0c0dfe274bb273268c0ab4db4, type: 3}
+  m_Script: {fileID: 11500000, guid: 9435835de30e4754da2542c447f17648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachPoint: {fileID: 1005031814}
-  cube: {fileID: 1760437662}
-  cubeTwoCorret: 0
+  blueCube: 0
 --- !u!1 &405779944
 GameObject:
   m_ObjectHideFlags: 0
@@ -31392,14 +31390,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405779944}
-  m_LocalRotation: {x: 1.110223e-17, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 1.110223e-17, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.5, y: 0, z: 27.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2065356063}
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 572010230}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &480333602
 GameObject:
@@ -31436,6 +31434,56 @@ Transform:
   - {fileID: 2091344433}
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &572010228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 572010230}
+  - component: {fileID: 572010229}
+  m_Layer: 0
+  m_Name: TestPuzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &572010229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572010228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93394d85f9f94c74f9245fcc0bec6abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderOne: {fileID: 2065356065}
+  colliderTwo: {fileID: 1926684438}
+  colliderThree: {fileID: 359697171}
+--- !u!4 &572010230
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572010228}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 405779950}
+  - {fileID: 168035784}
+  - {fileID: 942952155}
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!115 &580052268
 MonoScript:
@@ -46854,14 +46902,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 942952149}
-  m_LocalRotation: {x: 1.110223e-17, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 1.110223e-17, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3, y: 0, z: 27.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1926684436}
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  - {fileID: 359697169}
+  m_Father: {fileID: 572010230}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1005031813
 GameObject:
@@ -50126,8 +50174,8 @@ GameObject:
   - component: {fileID: 1544521534}
   - component: {fileID: 1544521535}
   m_Layer: 9
-  m_Name: TestPickUpObject
-  m_TagString: Cube
+  m_Name: YellowCube
+  m_TagString: YellowCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52938,8 +52986,8 @@ GameObject:
   - component: {fileID: 1760437658}
   - component: {fileID: 1760437657}
   m_Layer: 9
-  m_Name: TestPickUpObject (1)
-  m_TagString: Cube
+  m_Name: BlueCube
+  m_TagString: BlueCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53682,12 +53730,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926684435}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.482, y: 3.343, z: -0.45000076}
+  m_LocalPosition: {x: 0.48199987, y: 3.343, z: -0.45000076}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1449610842}
-  m_Father: {fileID: 942952155}
+  m_Father: {fileID: 168035784}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1926684437
@@ -53720,12 +53768,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1926684435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed62249810352464db5f89180179c160, type: 3}
+  m_Script: {fileID: 11500000, guid: b7f21f0230323534bbf05e746346e2ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachPoint: {fileID: 1449610842}
-  cube: {fileID: 1954560489}
-  cubeThreeCorret: 0
+  pinkCube: 0
 --- !u!1 &1954560483
 GameObject:
   m_ObjectHideFlags: 0
@@ -53741,8 +53787,8 @@ GameObject:
   - component: {fileID: 1954560485}
   - component: {fileID: 1954560484}
   m_Layer: 9
-  m_Name: TestPickUpObject (2)
-  m_TagString: Cube
+  m_Name: PinkCube
+  m_TagString: PinkCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53967,12 +54013,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2065356062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b879fff41d08b3545be32ed536aafba1, type: 3}
+  m_Script: {fileID: 11500000, guid: adbfcf780548dcf449117401d54d2324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachPoint: {fileID: 1970244347}
-  cube: {fileID: 1544521533}
-  cubeOneCorret: 0
+  yellowCube: 0
 --- !u!1 &2090477846
 GameObject:
   m_ObjectHideFlags: 0
