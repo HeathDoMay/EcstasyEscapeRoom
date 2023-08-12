@@ -8,7 +8,6 @@ public class TestPuzzle : MonoBehaviour
     public ColliderTwo colliderTwo;
     public ColliderThree colliderThree;
 
-
     private void Update()
     {
         if(colliderOne.yellowCube == true && colliderTwo.pinkCube == true && colliderThree.blueCube == true)
@@ -17,7 +16,7 @@ public class TestPuzzle : MonoBehaviour
         }
         else
         {
-            Debug.Log("Try Again");
+           // Debug.Log("Try Again");
         }
     }
 }
