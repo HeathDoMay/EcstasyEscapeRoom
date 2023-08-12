@@ -5,9 +5,6 @@ using UnityEngine.Events;
 
 public class NumberButtons : MonoBehaviour
 {
-    [Header("Button Number")]
-    [SerializeField] private string number;
-
     [Tooltip("Using a unity event in order to check if the password is correct.")]
     public UnityEvent buttonPressed;
 
