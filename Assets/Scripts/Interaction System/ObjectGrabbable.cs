@@ -9,6 +9,8 @@ public class ObjectGrabbable : MonoBehaviour
     private Rigidbody objectRigidbody;
     private Transform objectGrabPointTransform;
 
+    public bool grabbedObject = false;
+
     private void Awake()
     {
         // accessing a grabble objects rigidbody
@@ -23,6 +25,10 @@ public class ObjectGrabbable : MonoBehaviour
         // setting parameters on Rigidbody 
         objectRigidbody.useGravity = false;
         objectRigidbody.isKinematic = true;
+
+        // bool to check if object has been grabbed
+        grabbedObject = true;
+        Debug.Log(grabbedObject);
     }
 
     public void Drop()
@@ -33,6 +39,10 @@ public class ObjectGrabbable : MonoBehaviour
         // resetting parameters on Rigidbody
         objectRigidbody.useGravity = true;
         objectRigidbody.isKinematic = false;
+
+        // bool to check if object has been grabbed
+        grabbedObject = false;
+        Debug.Log(grabbedObject);
     }
 
     // public void Rotate()

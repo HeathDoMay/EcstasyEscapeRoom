@@ -52,7 +52,7 @@ public class InteractSystem : MonoBehaviour
             // raycast that will detect an object with the "Drawer" mask
             if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit raycastHit, openDistance, openDrawerMask))
             {
-                Debug.Log(raycastHit.transform);
+                //Debug.Log(raycastHit.transform);
                 pressE.SetActive(true);
 
                 if (drawerIsOpen == false)
@@ -64,7 +64,7 @@ public class InteractSystem : MonoBehaviour
                             // play animation
 
                             drawerIsOpen = true;
-                            Debug.Log(drawerIsOpen);
+                            //Debug.Log(drawerIsOpen);
                         }
                     }
                 }
@@ -77,7 +77,7 @@ public class InteractSystem : MonoBehaviour
                             // play animation
 
                             drawerIsOpen = false;
-                            Debug.Log(drawerIsOpen);
+                            //Debug.Log(drawerIsOpen);
                         }
                     }
                 }
@@ -169,15 +169,6 @@ public class InteractSystem : MonoBehaviour
             }
         }
 
-        // player holds R the object in hand will rotate
-        // if (pickedUpObject == true)
-        // {
-        //     if (Input.GetKey(playerInput.rotate))
-        //     {
-        //         objectGrabbable.Rotate();
-        //     }
-        // }
-
         // press G to drop object, could make the player have to press E again to drop
         if (Input.GetKeyDown(playerInput.drop))
         {
@@ -188,5 +179,16 @@ public class InteractSystem : MonoBehaviour
             pickedUpObject = false;
             // Debug.Log(pickedUpObject);
         }
+
+        // player holds R the object in hand will rotate
+        // if (pickedUpObject == true)
+        // {
+        //     if (Input.GetKey(playerInput.rotate))
+        //     {
+        //         objectGrabbable.Rotate();
+        //     }
+        // }
+
+
     }
 }
