@@ -12,35 +12,41 @@ public class Keypad : MonoBehaviour
     [Header("Door Animator")]
     [SerializeField] private Animator animator;
 
-    [Header("Screen Ouput")]
-    [SerializeField] private TextMeshPro screen;
+    [Header("Text Ouput")]
+    [SerializeField] private TextMeshPro text;
 
     [Space]
     [SerializeField] private GameObject numberColliders;
+
+    public ChangeScreenMaterial screenMaterial;
+
     private void Start()
     {
         userInput = "";
     }
-    
+
     public void ButtonPressed(string number)
     {
         // everytime a button is pressed we add that data to the userInput variable
         userInput += number;
-        screen.text = userInput;
+        text.text = userInput;
 
-        screen.color = Color.black;
+        screenMaterial.Default();
+        text.color = Color.black;
 
         // check if usersInput is a length of 4
-        if(userInput.Length >= 4)
+        if (userInput.Length >= 4)
         {
-            if(userInput == password)
+            if (userInput == password)
             {
                 // add sound effects
 
                 // plays animation
                 animator.SetTrigger("keypadDoorOpen");
-                screen.text = "CORRECT!";
-                screen.color = Color.green;
+
+                text.text = "";
+                screenMaterial.Green();
+                // text.color = Color.green;
                 numberColliders.SetActive(false);
             }
             else
@@ -49,8 +55,8 @@ public class Keypad : MonoBehaviour
 
                 // resets userInput to empty
                 userInput = "";
-                screen.text = "ERROR!";
-                screen.color = Color.red;
+                text.text = "";
+                screenMaterial.Red();
             }
         }
     }
