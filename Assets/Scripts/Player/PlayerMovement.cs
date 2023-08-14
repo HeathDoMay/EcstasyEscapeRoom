@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float gravity;
     [SerializeField] private float jumpHeight;
 
-    [Header("References")]
+    [Header("Ground Check")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundDistance;
     [SerializeField] private LayerMask groundMask;

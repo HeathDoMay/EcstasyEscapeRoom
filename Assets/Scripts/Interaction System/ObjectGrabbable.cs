@@ -28,7 +28,7 @@ public class ObjectGrabbable : MonoBehaviour
 
         // bool to check if object has been grabbed
         grabbedObject = true;
-        Debug.Log(grabbedObject);
+        Debug.Log("Object was picked up: " + grabbedObject);
     }
 
     public void Drop()
@@ -42,7 +42,7 @@ public class ObjectGrabbable : MonoBehaviour
 
         // bool to check if object has been grabbed
         grabbedObject = false;
-        Debug.Log(grabbedObject);
+        Debug.Log("Object was dropped: " + grabbedObject);
     }
 
     // public void Rotate()

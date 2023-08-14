@@ -22,7 +22,7 @@ public class InteractSystem : MonoBehaviour
 
     [Header("Open Drawer")]
     [SerializeField] private LayerMask openDrawerMask;
-    bool drawerIsOpen = false;
+    public bool drawerIsOpen = false;
 
 
     [Header("UI Reference")]
@@ -30,7 +30,7 @@ public class InteractSystem : MonoBehaviour
 
     private ObjectGrabbable objectGrabbable;
     private OpenObjects openObjects;
-    private bool pickedUpObject;
+    private bool pickedUpObject = false;
 
     void Update()
     {
@@ -43,60 +43,53 @@ public class InteractSystem : MonoBehaviour
 
     private void OpenDrawers()
     {
-        if (pickedUpObject == true)
-        {
-            Debug.Log("Cant open that");
-        }
-        else
+        if (pickedUpObject == false)
         {
             // raycast that will detect an object with the "Drawer" mask
             if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit raycastHit, openDistance, openDrawerMask))
             {
-                //Debug.Log(raycastHit.transform);
+                Debug.Log(raycastHit.transform);
                 pressE.SetActive(true);
 
-                if (drawerIsOpen == false)
+                switch (drawerIsOpen)
                 {
-                    if (Input.GetKeyDown(playerInput.interact))
-                    {
-                        if (raycastHit.transform.TryGetComponent(out openObjects))
+                    case false:
+                        if (Input.GetKeyDown(playerInput.interact))
                         {
-                            // play animation
+                            if (raycastHit.transform.TryGetComponent(out openObjects))
+                            {
+                                // play animation
 
-                            drawerIsOpen = true;
-                            //Debug.Log(drawerIsOpen);
+                                drawerIsOpen = true;
+                                Debug.Log("Drawer opening: " + drawerIsOpen);
+                            }
                         }
-                    }
-                }
-                else if (drawerIsOpen == true)
-                {
-                    if (Input.GetKeyDown(playerInput.interact))
-                    {
-                        if (raycastHit.transform.TryGetComponent(out openObjects))
+                        break;
+                    case true:
+                        if (Input.GetKeyDown(playerInput.interact))
                         {
-                            // play animation
+                            if (raycastHit.transform.TryGetComponent(out openObjects))
+                            {
+                                // play animation
 
-                            drawerIsOpen = false;
-                            //Debug.Log(drawerIsOpen);
+                                drawerIsOpen = false;
+                                Debug.Log("Drawer closing: " + drawerIsOpen);
+                            }
                         }
-                    }
-                }
-                else
-                {
-                    drawerIsOpen = false;
+                        break;
                 }
             }
+        }
+        else
+        {
+            Debug.Log("Cant open that");
         }
     }
 
     private void OpenDoors()
     {
         // player is holding an object they can not open a door 
-        if (pickedUpObject == true)
-        {
-            Debug.Log("Cant open that");
-        }
-        else
+        if (pickedUpObject == false)
         {
             // raycast that will detect an object with the "Door" mask
             if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit raycastHit, openDistance, openDoorMask))
@@ -104,38 +97,39 @@ public class InteractSystem : MonoBehaviour
                 // Debug.Log(raycastHit.transform);
                 pressE.SetActive(true);
 
-                if (doorIsOpen == false)
+                switch (doorIsOpen)
                 {
-                    if (Input.GetKeyDown(playerInput.interact))
-                    {
-                        // checks if the door has the script OpenObjects
-                        if (raycastHit.transform.TryGetComponent(out openObjects))
+                    case false:
+                        if (Input.GetKeyDown(playerInput.interact))
                         {
-                            // plays animation
-                            openObjects.OpenDoor();
-                            doorIsOpen = true;
-                            // Debug.Log(doorIsOpen);
+                            // checks if the door has the script OpenObjects
+                            if (raycastHit.transform.TryGetComponent(out openObjects))
+                            {
+                                // plays animation
+                                openObjects.OpenDoor();
+                                doorIsOpen = true;
+                                Debug.Log($"Door is now open: {doorIsOpen}");
+                            }
                         }
-                    }
-                }
-                else if (doorIsOpen == true)
-                {
-                    if (Input.GetKeyDown(playerInput.interact))
-                    {
-                        if (raycastHit.transform.TryGetComponent(out openObjects))
+                        break;
+                    case true:
+                        if (Input.GetKeyDown(playerInput.interact))
                         {
-                            // plays animation
-                            openObjects.CloseDoor();
-                            doorIsOpen = false;
-                            // Debug.Log(doorIsOpen);
+                            if (raycastHit.transform.TryGetComponent(out openObjects))
+                            {
+                                // plays animation
+                                openObjects.CloseDoor();
+                                doorIsOpen = false;
+                                Debug.Log($"Door is now closed: {doorIsOpen}" );
+                            }
                         }
-                    }
-                }
-                else
-                {
-                    doorIsOpen = false;
+                        break;
                 }
             }
+        }
+        else
+        {
+            Debug.Log("Cant open that");
         }
     }
 
@@ -188,7 +182,5 @@ public class InteractSystem : MonoBehaviour
         //         objectGrabbable.Rotate();
         //     }
         // }
-
-
     }
 }

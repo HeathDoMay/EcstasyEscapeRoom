@@ -40,6 +40,7 @@ public class Keypad : MonoBehaviour
                 // plays animation
                 animator.SetTrigger("keypadDoorOpen");
                 screen.text = "CORRECT!";
+                screen.color = Color.green;
                 numberColliders.SetActive(false);
             }
             else
@@ -49,6 +50,7 @@ public class Keypad : MonoBehaviour
                 // resets userInput to empty
                 userInput = "";
                 screen.text = "ERROR!";
+                screen.color = Color.red;
             }
         }
     }
