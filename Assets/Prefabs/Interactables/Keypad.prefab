@@ -982,6 +982,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7963839537709303367}
   - component: {fileID: 7356559400195645500}
+  - component: {fileID: 1606753689063544527}
   m_Layer: 0
   m_Name: Keypad
   m_TagString: Untagged
@@ -1005,7 +1006,7 @@ Transform:
   - {fileID: 6642332226079617183}
   - {fileID: 6947886112348288277}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7356559400195645500
 MonoBehaviour:
@@ -1020,9 +1021,110 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   password: 6969
+  userInput: 
   animator: {fileID: 0}
-  screen: {fileID: 5900613311466532331}
+  text: {fileID: 5900613311466532331}
   numberColliders: {fileID: 7607004115598130245}
+  screenMaterial: {fileID: 8543209637535163180}
+  keypadAudio:
+  - {fileID: 8300000, guid: 1808311cda0302447861ee3d082576f5, type: 3}
+  - {fileID: 8300000, guid: 764eb67a9b3fb734da92ffb3321be811, type: 3}
+--- !u!82 &1606753689063544527
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6681387390317415598}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7607004115598130245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,7 +1180,7 @@ GameObject:
   - component: {fileID: 5787654175812514219}
   - component: {fileID: 5900613311466532331}
   m_Layer: 0
-  m_Name: ScreenText
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1176,8 +1278,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4279596544
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1344,6 +1446,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4532042952737797828}
+    - targetCorrespondingSourceObject: {fileID: -8256134651489076907, guid: 812da4732764ff349ab17b61ed179ccb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8543209637535163180}
   m_SourcePrefab: {fileID: 100100000, guid: 812da4732764ff349ab17b61ed179ccb, type: 3}
 --- !u!1 &68231407412843781 stripped
 GameObject:
@@ -1373,6 +1479,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1875780437015597444, guid: 812da4732764ff349ab17b61ed179ccb, type: 3}
+--- !u!114 &8543209637535163180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68231407412843781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 595dce305222e1e4c8910a4b4e8d98b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: 0319880f5866a6f4f8dd98eacd4ebeca, type: 2}
+  - {fileID: 2100000, guid: 7a6daf9d29ede7b48a424dedffc75df7, type: 2}
+  - {fileID: 2100000, guid: 337824ba49abe6747a94fa139674d842, type: 2}
+  duration: 5
+  keypad: {fileID: 7356559400195645500}
 --- !u!4 &726346319132642235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 812da4732764ff349ab17b61ed179ccb,

@@ -18,10 +18,16 @@ public class Keypad : MonoBehaviour
     [Space]
     [SerializeField] private GameObject numberColliders;
 
+    [Space]
     public ChangeScreenMaterial screenMaterial;
+
+    [Header("Audio")]
+    public AudioClip[] keypadAudio;
+    private AudioSource audioSource;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         userInput = "";
     }
 
@@ -31,8 +37,8 @@ public class Keypad : MonoBehaviour
         userInput += number;
         text.text = userInput;
 
+        // set color of the screen
         screenMaterial.Default();
-        text.color = Color.black;
 
         // check if usersInput is a length of 4
         if (userInput.Length >= 4)
@@ -40,22 +46,30 @@ public class Keypad : MonoBehaviour
             if (userInput == password)
             {
                 // add sound effects
+                audioSource.PlayOneShot(keypadAudio[0]);
 
                 // plays animation
                 animator.SetTrigger("keypadDoorOpen");
 
+                // reset text
                 text.text = "";
-                screenMaterial.Green();
-                // text.color = Color.green;
+
+                // deactive colliders so player can not press the buttons anymore
                 numberColliders.SetActive(false);
+
+                // set color of the screen
+                screenMaterial.Green();
             }
             else
             {
                 // add sound effects
+                audioSource.PlayOneShot(keypadAudio[1]);
 
                 // resets userInput to empty
                 userInput = "";
                 text.text = "";
+
+                // set color of the screen
                 screenMaterial.Red();
             }
         }
