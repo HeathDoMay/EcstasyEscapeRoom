@@ -16701,6 +16701,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 831b2e89ec7659a4f81fe4f319e08bd5, type: 3}
+--- !u!4 &276004716 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4238174585152115660, guid: 2f301fc7e9b230d4abb5710ccf9db789,
+    type: 3}
+  m_PrefabInstance: {fileID: 2773917132204019772}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &282894513
 Mesh:
   m_ObjectHideFlags: 0
@@ -56809,6 +56815,11 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 536825567}
+    - target: {fileID: 7356559400195645500, guid: 5edcbc8e838469145843d182f5e151f0,
+        type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 276004716}
     - target: {fileID: 7963839537709303367, guid: 5edcbc8e838469145843d182f5e151f0,
         type: 3}
       propertyPath: m_RootOrder

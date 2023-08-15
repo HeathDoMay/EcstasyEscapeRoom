@@ -25,6 +25,36 @@ public class Keypad : MonoBehaviour
     public AudioClip[] keypadAudio;
     private AudioSource audioSource;
 
+    [Header("Camera")]
+    [SerializeField] private Transform playerCamera;
+
+    [Header("UI Activation")]
+    [SerializeField] private float detectDistance;
+    [SerializeField] private LayerMask keypadNumbers;
+    [SerializeField] private GameObject inputUI;
+
+    bool correctPassword;
+
+    void Update()
+    {
+        switch (correctPassword)
+        {
+            case false:
+                if (Physics.Raycast(playerCamera.position, playerCamera.forward, detectDistance, keypadNumbers))
+                {
+                    inputUI.SetActive(true);
+                }
+                else
+                {
+                    inputUI.SetActive(false);
+                }
+                break;
+            case true:
+                inputUI.SetActive(false);
+                break; 
+        }
+    }
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -59,6 +89,8 @@ public class Keypad : MonoBehaviour
 
                 // set color of the screen
                 screenMaterial.Green();
+
+                correctPassword = true;
             }
             else
             {
