@@ -6,8 +6,8 @@ public class ChangeScreenMaterial : MonoBehaviour
 {
     public Material[] materials;
     private new Renderer renderer;
-    public float duration = 5f;
-
+    
+    // public float duration = 5f;
     // public Keypad keypad;
 
     // Start is called before the first frame update

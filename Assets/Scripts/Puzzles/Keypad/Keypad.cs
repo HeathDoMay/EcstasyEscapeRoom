@@ -22,7 +22,7 @@ public class Keypad : MonoBehaviour
     public ChangeScreenMaterial screenMaterial;
 
     [Header("Audio")]
-    public AudioClip[] keypadAudio;
+    [SerializeField] private AudioClip[] keypadAudio;
     private AudioSource audioSource;
 
     [Header("Camera")]
