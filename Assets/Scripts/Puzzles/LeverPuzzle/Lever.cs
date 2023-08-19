@@ -8,7 +8,9 @@ public class Lever : MonoBehaviour
     [Tooltip("Using a unity event in order to check if the password is correct.")]
     [SerializeField] private UnityEvent leverPulled;
     [Space]
-    public LeverPuzzle  leverPuzzle;
+    public LeverPuzzle leverPuzzle;
+    [Space]
+    public Animator animator;
     [SerializeField] private AudioClip leverSFX;
 
     private AudioSource audioSource;
@@ -23,9 +25,12 @@ public class Lever : MonoBehaviour
     private void Update()
     {
         // if the levers are pulled in the correct order, then the colliders that activate the puzzle will be disabled
-        if(leverPuzzle.leverInput == leverPuzzle.correctOrder)
+        if (leverPuzzle.leverInput.Length >= 5)
         {
-            collider.enabled = false;
+            if (leverPuzzle.leverInput == leverPuzzle.correctOrder)
+            {
+                collider.enabled = false;
+            }
         }
     }
 
@@ -33,6 +38,8 @@ public class Lever : MonoBehaviour
     {
         // Play audio
         audioSource.PlayOneShot(leverSFX);
+
+        animator.SetTrigger("pullLever");
 
         leverPulled.Invoke();
     }

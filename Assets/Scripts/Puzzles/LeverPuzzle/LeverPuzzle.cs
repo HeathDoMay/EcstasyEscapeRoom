@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class LeverPuzzle : MonoBehaviour
     public ChangeWallMaterial wallMaterial;
 
     private AudioSource audioSource;
+    public Lever[] lever;
 
     private void Start()
     {
@@ -42,10 +44,19 @@ public class LeverPuzzle : MonoBehaviour
                 // play audio, change material, play animation
                 audioSource.PlayOneShot(leverAudio[1]);
                 wallMaterial.Error();
-
+                LeverResetAnim();
                 leverInput = "";
                 Debug.Log("incorrect try again");
             }
         }
+    }
+
+    private void LeverResetAnim()
+    {
+        lever[0].animator.SetTrigger("resetLever");
+        lever[1].animator.SetTrigger("resetLever");
+        lever[2].animator.SetTrigger("resetLever");
+        lever[3].animator.SetTrigger("resetLever");
+        lever[4].animator.SetTrigger("resetLever");
     }
 }
